@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :body %>
-    <%= form.text_area :body %>
+    <%= form.rich_text_area :body %>
   </div>
 
   <div class="field">
@@ -26,10 +26,12 @@
     <%= form.file_field :images, multiple: true %>
   </div>
 
-<!--   <div class="field">
+<%= current_user.id %>
+
+  <div class="field">
     <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div> -->
+    <%= form.hidden_field :user_id, value: current_user.id %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>
