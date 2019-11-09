@@ -1,35 +1,61 @@
 <p id="notice"><%= notice %></p>
+<button type="button" class="btn btn-success">Success</button>
 
-<h1>Posts</h1>
+  <% if user_signed_in? %>
+    <%= link_to 'ALL_POSTS', posts_path,  id: "all_posts_button",  remote: true, onclick: "loadAllPosts('posts_path')" %>
+    <%= link_to "#{current_user.name}'s POSTS", current_user_posts_posts_path, id: "current_user_posts_button",  remote: true, onclick: "loadCurrentUserPosts()" %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <% end%>
 
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.body %></td>
-        <td><%= post.user_id %></td>
 
-      <% if current_user && post.user_id == current_user.id %>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
 
-<% if user_signed_in? %>
-  <%= link_to 'New Post', new_post_path %>
-<% end%>
+<div id="all_posts">
+
+
+<% if @posts.count %>
+    <h1>All Posts</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Body</th>
+          <th>User</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @posts.each do |post| %>
+          <tr>
+            <td><%= post.title %></td>
+            <td><%= post.body %></td>
+            <td><%= post.user_id %></td>
+
+          <% if current_user && post.user_id == current_user.id %>
+            <td><%= link_to 'Show', post %></td>
+            <td><%= link_to 'Edit', edit_post_path(post) %></td>
+            <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br>
+
+    <% if user_signed_in? %>
+      <%= link_to 'New Post', new_post_path %>
+    <% end%>
+  </div>
+
+<% else %>
+  <h1>No posts yet</h1>
+<% end %>
+
+
+
+<div id="current_user_posts"></div>
+
+
+
+
