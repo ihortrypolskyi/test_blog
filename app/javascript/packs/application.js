@@ -23,10 +23,11 @@ import 'bootstrap'
 // import '/stylesheets/application'
 
 require("trix")
-require("trix")
+require("bootstrap")
 
 require("@rails/actiontext")
 require("packs/current_user_posts")
+require("packs/main.js")
 
 
 // document.addEventListener("turbolinks:load", () => {
