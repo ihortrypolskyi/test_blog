@@ -1,6 +1,8 @@
 test:
   service: Disk
   root: <%= Rails.root.join("tmp/storage") %>
+  # bucket: ""
+  public: true
 
 local:
   service: Disk

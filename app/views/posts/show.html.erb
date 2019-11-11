@@ -1,26 +1,41 @@
-<p id="notice"><%= notice %></p>
+<header class="masthead" style="background-image: url(<%= rails_blob_url(@post.images.first) %>)">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1><%= @post.title %></h1>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+            <span class="meta">Posted by <span class="author"><%= @post.user.name %></span>
+                  <%= @post.created_at.strftime("%Y-%m-%d") %></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <p id="notice"><%= notice %></p>
+  <% if current_user && @post.user_id == current_user.id %>
+    <div class="text-center show-icons">
+      <%= link_to '', edit_post_path(@post), class: "fas fa-edit" %>
+      <%= link_to '', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "fas fa-trash" %>
+    </div>
+  <% end %>
 
-<p>
-  <strong>Body:</strong>
-  <%= @post.body %>
-</p>
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p><%= @post.body %></p>
+        </div>
+      </div>
+    </div>
+  </article>
+  <hr>
+  <div class="row">
 
-<p>
-  <strong>Images:</strong>
-  <% @post.images.each do |image| %>
-  <%= image_tag image %>
-<% end %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @post.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+    <% @post.images.each do |image| %>
+      <div class="images_block">
+        <%= image_tag(image) %>
+      </div>
+  <% end  %>
+</div>

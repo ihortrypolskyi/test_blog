@@ -1,32 +1,48 @@
-<%= form_with(model: post, local: true) do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
-        <% post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+<header class="masthead" style="background-image: url('images/home-bg.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          <h1>Test Blog</h1>
+          <span class="subheading">for Sloboda studio</span>
+        </div>
+      </div>
     </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <%= bootstrap_form_with(model: post, local: true) do |form| %>
+    <% if post.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+        <ul>
+          <% post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.text_field :title %>
+    </div>
+
+    <div class="field">
+      <%= form.rich_text_area :body %>
+    </div>
+
+    <div class="field">
+      <%= form.file_field :images, multiple: true %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
+      <%= link_to 'Back', posts_path, class: "btn btn-secondary"  %>
+    </div>
+
   <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.rich_text_area :body %>
-  </div>
-
-  <div class="field">
-    <%= form.label :images %>
-    <%= form.file_field :images, multiple: true %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

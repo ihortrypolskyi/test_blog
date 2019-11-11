@@ -1,5 +1,3 @@
-console.log("yes");
-
 document.addEventListener("turbolinks:load", () => {
 
   window.loadCurrentUserPosts = function(){
@@ -18,7 +16,5 @@ document.addEventListener("turbolinks:load", () => {
     document.getElementById("current_user_posts").style.display = 'none';
     document.getElementById("all_posts").style.display = 'block';
   }
-
-
 
 })
