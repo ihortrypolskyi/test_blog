@@ -46,9 +46,20 @@ document.addEventListener("turbolinks:load", () => {
     if (notice.innerHTML) {
       setTimeout(function() {
         notice.classList.add("hidden");
-      }, 3000);
+      }, 1000);
+
     }
   }
 
+//fade in please-login-message
+  let please_login_message = document.getElementsByClassName("please-login-message")[0];
+    if (typeof(please_login_message) != 'undefined' && please_login_message != null){
+      if (please_login_message.innerHTML) {
+        setTimeout(function() {
+          please_login_message.classList.remove("hidden");
+          please_login_message.classList.add("shown");
+        }, 3000);
+      }
+    }
 
 })

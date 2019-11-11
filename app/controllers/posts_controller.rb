@@ -2,8 +2,6 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :add_current_user_to_post]
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
 
-
-
   # GET /posts
   # GET /posts.json
   def index
@@ -19,7 +17,11 @@ end
   # GET /posts/1
   # GET /posts/1.json
   def show
+     @skip_header = true
 
+     if @post.images.count > 0
+      @first_post_image = rails_blob_url(@post.images.first)
+    end
   end
 
   # GET /posts/new
@@ -71,6 +73,9 @@ end
     end
   end
 
+  def agenda
+  end
+
   private
 
     # Use callbacks to share common setup or constraints between actions.
@@ -82,6 +87,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :body, images: [])
+      params.require(:post).permit(:title, :body, :active, images: [])
     end
 end

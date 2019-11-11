@@ -1,49 +1,54 @@
+<% unless @current_user_posts.count > 0 %>
+    <div class="col-md-12 text-center no-posts">
+        There are no your posts yet.
+    </div>
+<% end %>
+
 <div class="col-lg-8 col-md-10 mx-auto">
   <div class="buttons-block text-center">
     <% if user_signed_in? %>
       <%= link_to 'All Posts', posts_path,  id: "all_posts_button",  remote: true, onclick: "loadAllPosts('posts_path')", class: "btn btn-secondary" %>
       <%= link_to 'New Post', new_post_path, class: "btn btn-secondary" %>
     <% else %>
-          <div class="col-md-12 text-left">
-            Please, login to to write new post.
-          </div>
+      <div class="col-md-12 text-center please-login-message hidden">
+        Please, login to write new post.
+      </div>
     <% end %>
   </div>
 
-  <% if @current_user_posts.count > 0 %>
-
-    <% @current_user_posts.each do |post| %>
-      <div class="post-preview">
-        <%= link_to post do %>
-          <h2 class="post-title">
-           <%= post.title %>
-          </h2>
-          <h3 class="post-subtitle">
+  <% @current_user_posts.each do |post| %>
+    <div class="post-preview">
+      <%= link_to post do %>
+        <h2 class="post-title">
+         <%= post.title %>
+        </h2>
+        <h3 class="post-subtitle">
+          <% if post.active? %>
             <%= truncate(strip_tags(post.body.to_s), length: 150) %>
-          </h3>
-        <% end %>
-        <div class="post-meta">
-          <div class="row">
-            <div class="col-md-6 text-left">
-              Posted by <span class="author"><%= post.user.name %></span>
-              <%= post.created_at.strftime("%Y-%m-%d") %>
-            </div>
-
-            <% if current_user && post.user_id == current_user.id %>
-              <div  class="col-md-6 text-right icons">
-                <%= link_to '', post, class: "fas fa-eye" %>
-                <%= link_to '', edit_post_path(post), class: "fas fa-edit" %>
-                <%= link_to '', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "fas fa-trash" %>
-              </div>
-            <% end %>
+          <% else  %>
+            Not pablished on home page
+          <% end  %>
+        </h3>
+      <% end %>
+      <div class="post-meta">
+        <div class="row">
+          <div class="col-md-6 text-left">
+            Posted by <span class="author"><%= post.user.name %></span>
+            <%= post.created_at.strftime("%Y-%m-%d") %>
           </div>
-        </div>
-        <hr>
-      </div>
-    <% end %>
 
-  <% else %>
-    <h1>There are no your posts yet</h1>
+          <% if current_user && post.user_id == current_user.id %>
+            <div  class="col-md-6 text-right icons">
+              <%= link_to '', post, class: "fas fa-eye" %>
+              <%= link_to '', edit_post_path(post), class: "fas fa-edit" %>
+              <%= link_to '', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "fas fa-trash" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <hr>
+    </div>
   <% end %>
+
 </div>
 

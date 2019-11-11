@@ -447,6 +447,12 @@ footer .copyright {
   transition: visibility 0s 2s, opacity 2s linear;
 }
 
+.shown {
+  visibility: visible;
+  opacity: 1;
+  transition: height 350ms ease-in-out, opacity 750ms ease-in-out;
+}
+
 .buttons-block {
   width:100%;
   margin: auto;
@@ -465,3 +471,14 @@ footer .copyright {
 .test div{
   display:inline-block;
 }
+
+.please-login-message {
+   color: #0085A1;
+}
+
+.no-posts {
+   color: #0085A1;
+   margin-bottom: 30px;
+}
+
+
