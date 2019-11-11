@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get 'agenda', on: :collection
   end
   root 'posts#index'
-  match '*path' => redirect('/'), via: :get
+  # match '*path' => redirect('/'), via: :get
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

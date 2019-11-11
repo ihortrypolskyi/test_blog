@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2019_11_11_170950) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"

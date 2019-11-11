@@ -481,4 +481,12 @@ footer .copyright {
    margin-bottom: 30px;
 }
 
+.container .user_form {
+  width: 50%;
+}
+
+.post_show_image img {
+  width:100%;
+}
+
 

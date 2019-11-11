@@ -5,7 +5,7 @@
     <div class="row">
       <div id="current_user_posts"></div>
       <div class="col-lg-8 col-md-10 mx-auto" id="all_posts">
-        <% unless @posts.published.count > 0 %>
+        <% unless @posts.active.count > 0 %>
            <div class="col-md-12 text-center no-posts">
               There are no posts yet.
           </div>
@@ -23,7 +23,7 @@
           <% end %>
         </div>
 
-        <% @posts.published.each do |post| %>
+        <% @posts.active.each do |post| %>
           <div class="post-preview">
             <%= link_to post do %>
               <h2 class="post-title">
