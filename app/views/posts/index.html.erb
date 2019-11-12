@@ -42,9 +42,9 @@
 
                 <% if current_user && post.user_id == current_user.id %>
                   <div  class="col-md-6 text-right icons">
-                    <%= link_to (fa_icon "camera-retro"), post  %>
-                    <%= link_to '', edit_post_path(post), class: "fas fa-edit" %>
-                    <%= link_to '', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "fas fa-trash" %>
+                    <%= link_to (fa_icon "fas eye"), post %>
+                    <%= link_to (fa_icon "fas edit"), edit_post_path(post) %>
+                    <%= link_to (fa_icon "fas trash"), post, method: :delete, data: { confirm: 'Are you sure?' } %>
                   </div>
                 <% end %>
               </div>
