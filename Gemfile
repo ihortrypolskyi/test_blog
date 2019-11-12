@@ -34,6 +34,8 @@ gem 'devise'
 gem 'carrierwave', '~> 2.0'
 gem 'mini_magick'
 gem "bootstrap_form", "~> 4.0"
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.5'
+gem "aws-sdk-s3", require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
