@@ -8,11 +8,11 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
-def current_user_posts
-  @current_user_posts = current_user.posts
-  # render json: @current_user_posts
-    render json: { html: render_to_string(partial: 'current_user_posts') }
-end
+  def current_user_posts
+    @current_user_posts = current_user.posts
+    # render json: @current_user_posts
+      render json: { html: render_to_string(partial: 'current_user_posts') }
+  end
 
   # GET /posts/1
   # GET /posts/1.json
