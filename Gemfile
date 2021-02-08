@@ -31,7 +31,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
 # gem 'cancancan'
 # gem 'rails_admin', '~> 2.0'
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.1'
 gem 'mini_magick'
 gem "bootstrap_form", "~> 4.0"
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.5'
